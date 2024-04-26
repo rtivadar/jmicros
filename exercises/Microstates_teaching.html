@@ -1,0 +1,1462 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>EEG microstate analysis &#8212; EEG microstates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/Microstates_teaching';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Microstates Analysis" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logoMS.png" class="logo__image only-light" alt="EEG microstates - Home"/>
+    <script>document.write(`<img src="../_static/logoMS.png" class="logo__image only-dark" alt="EEG microstates - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Microstates Analysis
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">EEG microstate analysis</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/rtivadar/jmicros/master?urlpath=tree/mini_book/exercises/Microstates_teaching.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/rtivadar/jmicros/blob/master/mini_book/exercises/Microstates_teaching.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rtivadar/jmicros" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rtivadar/jmicros/issues/new?title=Issue%20on%20page%20%2Fexercises/Microstates_teaching.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercises/Microstates_teaching.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>EEG microstate analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">EEG microstate analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-nr-1">Option nr 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backfitting">backfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-nr-2">Option nr 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit-2-for-some-fancy-applications">Neurokit 2 for some fancy applications</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="eeg-microstate-analysis">
+<h1>EEG microstate analysis<a class="headerlink" href="#eeg-microstate-analysis" title="Link to this heading">#</a></h1>
+<p>This script provides an illustration of a microstate analysis using the pycrostates &amp; neurokit2 packages.</p>
+<p>Author: Ruxandra I. Tivadar, code adapted from V. Ferat (<a class="reference external" href="https://pycrostates.readthedocs.io">https://pycrostates.readthedocs.io</a>)</p>
+<p>Microstate analysis in the pycrostates package uses the “Kmeans” or clusterization algorithm, that groups objects into k groups based on their characteristics. The grouping is done by minimizing the sum of the distances between each object and the group or cluster centroid.</p>
+<p>We show two methods:</p>
+<ol class="arabic simple">
+<li><p>microstates for the full group: the aim is to compare temporal characteristics (i.e. are the microstates present for different periods of time in the two groups)?</p></li>
+<li><p>microstates for each condition: is there any microstate map that is specific to one or the other condition?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if some packages do not load on the google site, use command below</span>
+<span class="c1">#!pip install neurokit2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For elimiating warnings</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="c1"># ignore all future warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages that contain all the functions you need to use</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">mne</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mne.io</span> <span class="kn">import</span> <span class="n">read_raw_fif</span><span class="p">,</span> <span class="n">concatenate_raws</span><span class="p">,</span> <span class="n">read_raw_eeglab</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+<span class="kn">import</span> <span class="nn">mne.viz</span>
+<span class="kn">import</span> <span class="nn">natsort</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">pycrostates.cluster</span> <span class="kn">import</span> <span class="n">ModKMeans</span>
+<span class="kn">from</span> <span class="nn">pycrostates.preprocessing</span> <span class="kn">import</span> <span class="n">extract_gfp_peaks</span>
+<span class="kn">from</span> <span class="nn">pycrostates.datasets</span> <span class="kn">import</span> <span class="n">lemon</span>
+<span class="kn">from</span> <span class="nn">pycrostates.io</span> <span class="kn">import</span> <span class="n">ChData</span>
+
+<span class="kn">import</span> <span class="nn">neurokit2</span> <span class="k">as</span> <span class="nn">nk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define dataset characteristics</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;EO&#39;</span><span class="p">,</span><span class="s1">&#39;EC&#39;</span><span class="p">]</span>
+<span class="n">subject_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;010020&quot;</span><span class="p">,</span> <span class="s2">&quot;010021&quot;</span><span class="p">,</span> <span class="s2">&quot;010022&quot;</span><span class="p">,</span> <span class="s2">&quot;010023&quot;</span><span class="p">,</span> <span class="s2">&quot;010024&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="option-nr-1">
+<h2>Option nr 1<a class="headerlink" href="#option-nr-1" title="Link to this heading">#</a></h2>
+<p>We compute microstates for the full group, combining files from the two conditions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">individual_cluster_centers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">subject_ids</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">condition_id</span> <span class="ow">in</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="c1"># load Data</span>
+        <span class="n">raw_fname</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition_id</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loading data for subject:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">subject_id</span><span class="p">),</span> <span class="s1">&#39;&amp; condition:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">condition_id</span><span class="p">))</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">read_raw_eeglab</span><span class="p">(</span><span class="n">raw_fname</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># crop the dataset to speed up computation</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="s2">&quot;average&quot;</span><span class="p">)</span>
+        <span class="c1"># extract GFP peaks</span>
+        <span class="n">gfp_peaks</span> <span class="o">=</span> <span class="n">extract_gfp_peaks</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="c1"># subject level clustering</span>
+        <span class="n">ModK</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+        <span class="n">ModK</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gfp_peaks</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">individual_cluster_centers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010020 &amp; condition: EO
+Reading /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.fdt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading 0 ... 104402  =      0.000 ...   417.608 secs...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating RawArray with float64 data, n_channels=61, n_times=104403
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Range : 0 ... 104402 =      0.000 ...   417.608 secs
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ready.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location for this channel is unknown; consider calling set_montage() after adding new reference channels if needed. Applying a montage will only set locations of channels that exist at the time it is applied.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting channel interpolation method to {&#39;eeg&#39;: &#39;spline&#39;}.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interpolating bad channels.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Automatic origin fit: head of radius 95.8 mm
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing interpolation matrix from 59 sensor positions
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interpolating 2 sensors
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EEG channel type selected for re-referencing
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying average reference.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying a custom (&#39;EEG&#39;,) reference.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EEG channel type selected for re-referencing
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying average reference.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying a custom (&#39;EEG&#39;,) reference.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010020 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010021 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010021 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010022 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010022 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010023 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010023 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010024 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010024 &amp; condition: EC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Then, the individual topographies are concatenated and used in the group level analysis to fit a second clustering algorithm.</span>
+
+<span class="n">group_cluster_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">individual_cluster_centers</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">group_cluster_centers</span> <span class="o">=</span> <span class="n">ChData</span><span class="p">(</span><span class="n">group_cluster_centers</span><span class="p">,</span> <span class="n">ModK</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
+
+<span class="c1"># group level clustering</span>
+<span class="n">ModK</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">ModK</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">group_cluster_centers</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ModK</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7e2a7da141236d9a6e0125735d1ab64677445735c83f243a63cfcac4c50e750b.png" src="../_images/7e2a7da141236d9a6e0125735d1ab64677445735c83f243a63cfcac4c50e750b.png" />
+<img alt="../_images/7e2a7da141236d9a6e0125735d1ab64677445735c83f243a63cfcac4c50e750b.png" src="../_images/7e2a7da141236d9a6e0125735d1ab64677445735c83f243a63cfcac4c50e750b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The map polarities can be inverted using the pycrostates.cluster.ModKMeans.invert_polarity(). method. </span>
+<span class="c1"># Note that it only affects visualization, it has not effect during backfitting as polarities are ignored.</span>
+
+<span class="n">ModK</span><span class="o">.</span><span class="n">invert_polarity</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="n">ModK</span><span class="o">.</span><span class="n">reorder_clusters</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ModK</span><span class="o">.</span><span class="n">rename_clusters</span><span class="p">(</span><span class="n">new_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MS1&quot;</span><span class="p">,</span> <span class="s2">&quot;MS2&quot;</span><span class="p">,</span> <span class="s2">&quot;MS3&quot;</span><span class="p">,</span> <span class="s2">&quot;MS4&quot;</span><span class="p">,</span> <span class="s2">&quot;MS5&quot;</span><span class="p">])</span>
+<span class="n">ModK</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/36f2b92c52bb92bda0cbba94d5468c37b801c8c26465a8d96517765eba55b758.png" src="../_images/36f2b92c52bb92bda0cbba94d5468c37b801c8c26465a8d96517765eba55b758.png" />
+<img alt="../_images/36f2b92c52bb92bda0cbba94d5468c37b801c8c26465a8d96517765eba55b758.png" src="../_images/36f2b92c52bb92bda0cbba94d5468c37b801c8c26465a8d96517765eba55b758.png" />
+</div>
+</div>
+</section>
+<section id="backfitting">
+<h2>backfitting<a class="headerlink" href="#backfitting" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ms_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">segmentation_group</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">subject_ids</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">condition_id</span> <span class="ow">in</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="c1"># Load Data</span>
+        <span class="n">raw_fname</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition_id</span><span class="p">)</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">read_raw_eeglab</span><span class="p">(</span><span class="n">raw_fname</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># for sake of time</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="s2">&quot;average&quot;</span><span class="p">)</span>
+        <span class="n">segmentation</span> <span class="o">=</span> <span class="n">ModK</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">half_window_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">compute_parameters</span><span class="p">()</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">&quot;condition_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">condition_id</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">&quot;subject_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject_id</span>
+        <span class="n">ms_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_EC</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ms_data</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;condition_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EC&#39;</span><span class="p">]</span>
+<span class="n">data_EO</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ms_data</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;condition_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EO&#39;</span><span class="p">]</span>
+
+<span class="n">GEV_EC</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS1_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS2_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS3_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS4_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS5_gev&#39;</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_EC</span>
+<span class="p">]</span>
+<span class="n">GEV_EO</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS1_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS2_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS3_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS4_gev&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS5_gev&#39;</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_EO</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GEV_EC</span> <span class="o">==</span> <span class="n">GEV_EO</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">ModK</span><span class="o">.</span><span class="n">cluster_names</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">GEV_EO</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span>
+    <span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Eyes Open&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">GEV_EC</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span>
+    <span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Eyes Closed&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Global Explained Variance (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ab01c882768c87037bd33c8354e5542b7c2e25b2d8b09c04d4accb8763ed8cdc.png" src="../_images/ab01c882768c87037bd33c8354e5542b7c2e25b2d8b09c04d4accb8763ed8cdc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Total_gev_EO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">GEV_EO</span><span class="p">)</span>
+<span class="n">Total_gev_EC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">GEV_EC</span><span class="p">)</span>
+
+<span class="n">sum_EO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Total_gev_EO</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">sum_EC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Total_gev_EC</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total explained variance is - EO:&#39;</span><span class="p">,</span> <span class="n">sum_EO</span><span class="p">,</span> <span class="s1">&#39;&amp; EC:&#39;</span><span class="p">,</span> <span class="n">sum_EC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total explained variance is - EO: 0.5147167463252209 &amp; EC: 0.5874373582710964
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_dur_EC</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS1_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS2_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS3_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS4_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS5_meandurs&#39;</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_EC</span>
+<span class="p">]</span>
+<span class="n">mean_dur_EO</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS1_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS2_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS3_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS4_meandurs&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MS5_meandurs&#39;</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_EO</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">ModK</span><span class="o">.</span><span class="n">cluster_names</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mean_dur_EO</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mean_dur_EC</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Eyes Open&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Eyes Closed&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Mean duration (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7e26685aa8da60839312f96d857347e3ffdc2f721127c605c4fa4a87909f8d7f.png" src="../_images/7e26685aa8da60839312f96d857347e3ffdc2f721127c605c4fa4a87909f8d7f.png" />
+</div>
+</div>
+</section>
+<section id="option-nr-2">
+<h2>Option nr 2<a class="headerlink" href="#option-nr-2" title="Link to this heading">#</a></h2>
+<p>We compute microstates for each of the conditions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">individual_cluster_centers_EO</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">condition</span> <span class="o">=</span> <span class="s1">&#39;EO&#39;</span>
+<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">subject_ids</span><span class="p">:</span>
+    <span class="c1"># load Data</span>
+    <span class="n">raw_fname</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dataname:&#39;</span><span class="p">,</span> <span class="n">raw_fname</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loading data for subject:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">subject_id</span><span class="p">),</span> <span class="s1">&#39;&amp; condition:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">condition</span><span class="p">))</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">read_raw_eeglab</span><span class="p">(</span><span class="n">raw_fname</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span>
+    <span class="n">raw</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># crop the dataset to speed up computation</span>
+    <span class="n">raw</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="s2">&quot;average&quot;</span><span class="p">)</span>
+    <span class="c1"># extract GFP peaks</span>
+    <span class="n">gfp_peaks</span> <span class="o">=</span> <span class="n">extract_gfp_peaks</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="c1"># subject level clustering</span>
+    <span class="n">ModK</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">ModK</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gfp_peaks</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">individual_cluster_centers_EO</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.set
+loading data for subject: 010020 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010021_EO.set
+loading data for subject: 010021 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010022_EO.set
+loading data for subject: 010022 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010023_EO.set
+loading data for subject: 010023 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010024_EO.set
+loading data for subject: 010024 &amp; condition: EO
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we first combine all the files into a dataset </span>
+<span class="n">group_cluster_centers_EO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">individual_cluster_centers_EO</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">group_cluster_centers_EO</span> <span class="o">=</span> <span class="n">ChData</span><span class="p">(</span><span class="n">group_cluster_centers_EO</span><span class="p">,</span> <span class="n">ModK</span><span class="o">.</span><span class="n">info</span><span class="p">)</span> <span class="c1"># stores data without time (only spatial component)</span>
+
+<span class="c1"># and do group-level clustering</span>
+<span class="n">ModK_g_EO</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">group_cluster_centers_EO</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" src="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" />
+<img alt="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" src="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The map polarities can be inverted using the pycrostates.cluster.ModKMeans.invert_polarity(). method. </span>
+<span class="c1"># Note that it only affects visualization, it has not effect during backfitting as polarities are ignored.</span>
+
+<span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">reorder_clusters</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">rename_clusters</span><span class="p">(</span><span class="n">new_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MS1&quot;</span><span class="p">,</span> <span class="s2">&quot;MS2&quot;</span><span class="p">,</span> <span class="s2">&quot;MS3&quot;</span><span class="p">,</span> <span class="s2">&quot;MS4&quot;</span><span class="p">,</span> <span class="s2">&quot;MS5&quot;</span><span class="p">])</span>
+<span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">individual_cluster_centers_EC</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">condition</span> <span class="o">=</span> <span class="s1">&#39;EC&#39;</span>
+<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">subject_ids</span><span class="p">:</span>
+    <span class="c1"># load Data</span>
+    <span class="n">raw_fname</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dataname:&#39;</span><span class="p">,</span> <span class="n">raw_fname</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loading data for subject:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">subject_id</span><span class="p">),</span> <span class="s1">&#39;&amp; condition:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">condition</span><span class="p">))</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">read_raw_eeglab</span><span class="p">(</span><span class="n">raw_fname</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span> 
+    <span class="n">raw</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  
+    <span class="n">raw</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="s2">&quot;average&quot;</span><span class="p">)</span>
+    <span class="n">gfp_peaks</span> <span class="o">=</span> <span class="n">extract_gfp_peaks</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="n">ModK</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">ModK</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gfp_peaks</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">individual_cluster_centers_EC</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EC.set
+loading data for subject: 010020 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010021_EC.set
+loading data for subject: 010021 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010022_EC.set
+loading data for subject: 010022 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010023_EC.set
+loading data for subject: 010023 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010024_EC.set
+loading data for subject: 010024 &amp; condition: EC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we first combine all the files into a dataset </span>
+<span class="n">group_cluster_centers_EC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">individual_cluster_centers_EC</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">group_cluster_centers_EC</span> <span class="o">=</span> <span class="n">ChData</span><span class="p">(</span><span class="n">group_cluster_centers_EC</span><span class="p">,</span> <span class="n">ModK</span><span class="o">.</span><span class="n">info</span><span class="p">)</span> <span class="c1"># stores data without time (only spatial component)</span>
+
+<span class="c1"># and do group-level clustering</span>
+<span class="n">ModK_g_EC</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">ModK_g_EC</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">group_cluster_centers_EO</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ModK_g_EC</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" src="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" />
+<img alt="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" src="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The map polarities can be inverted using the pycrostates.cluster.ModKMeans.invert_polarity(). method. </span>
+<span class="c1"># Note that it only affects visualization, it has not effect during backfitting as polarities are ignored.</span>
+
+<span class="c1">#ModK.invert_polarity([False, False, True, False, True])</span>
+<span class="n">ModK_g_EC</span><span class="o">.</span><span class="n">reorder_clusters</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ModK_g_EC</span><span class="o">.</span><span class="n">rename_clusters</span><span class="p">(</span><span class="n">new_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MS1&quot;</span><span class="p">,</span> <span class="s2">&quot;MS2&quot;</span><span class="p">,</span> <span class="s2">&quot;MS3&quot;</span><span class="p">,</span> <span class="s2">&quot;MS4&quot;</span><span class="p">,</span> <span class="s2">&quot;MS5&quot;</span><span class="p">])</span>
+<span class="n">ModK_g_EC</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ModK_g_EC</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segmentation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c0df698a9ef65ace58064571012bdd131f5b612f0205ec8f34f5b2715ae33dbb.png" src="../_images/c0df698a9ef65ace58064571012bdd131f5b612f0205ec8f34f5b2715ae33dbb.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="neurokit-2-for-some-fancy-applications">
+<h1>Neurokit 2 for some fancy applications<a class="headerlink" href="#neurokit-2-for-some-fancy-applications" title="Link to this heading">#</a></h1>
+<p>Pycrostates is nice and handy but does not currently (although it’s cooking) allow us to determine in a data-driven way how to determine the right number of clusters, which is something that the K-means algorithm needs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_all</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;EO&#39;</span><span class="p">,</span><span class="s1">&#39;EC&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="n">subject_ids</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">condition_id</span> <span class="ow">in</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="c1"># load Data</span>
+        <span class="n">raw_fname</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">data_path</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">subject_id</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition_id</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loading data for subject:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">subject_id</span><span class="p">),</span> <span class="s1">&#39;&amp; condition:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">condition_id</span><span class="p">))</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">read_raw_eeglab</span><span class="p">(</span><span class="n">raw_fname</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">lemon</span><span class="o">.</span><span class="n">standardize</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># crop the dataset to speed up computation</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="s2">&quot;average&quot;</span><span class="p">)</span>
+        <span class="n">data_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;sfreq&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010020 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010020 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010021 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010021 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010022 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010022 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010023 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010023 &amp; condition: EC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010024 &amp; condition: EO
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010024 &amp; condition: EC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We use the function from neurokit2 </span>
+<span class="n">n_optimal</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">microstates_findnumber</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">_fitted_data</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimal number of microstates: &quot;</span><span class="p">,</span> <span class="n">n_optimal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[........................................] 0/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[█████...................................] 1/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[███████████.............................] 2/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[█████████████████.......................] 3/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[██████████████████████..................] 4/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[████████████████████████████............] 5/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[██████████████████████████████████......] 6/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[████████████████████████████████████████] 7/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of microstates:  4.0
+</pre></div>
+</div>
+<img alt="../_images/fdc716bf6f9771304212415d887a9661cb83cae3ee78e18555067eb6ce6a0003.png" src="../_images/fdc716bf6f9771304212415d887a9661cb83cae3ee78e18555067eb6ce6a0003.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">microstates</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">microstates_segment</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">_fitted_data</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+                                     <span class="n">n_microstates</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Visualize the extracted microstates</span>
+<span class="n">nk</span><span class="o">.</span><span class="n">microstates_plot</span><span class="p">(</span><span class="n">microstates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">microstates</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">microstates_segment</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">_fitted_data</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                                      <span class="n">n_microstates</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Visualize the extracted microstates</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">nk</span><span class="o">.</span><span class="n">microstates_plot</span><span class="p">(</span><span class="n">microstates</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/neurokit2/microstates/microstates_plot.py:83,</span> in <span class="ni">microstates_plot</span><span class="nt">(microstates, segmentation, gfp, info, epoch)</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="c1"># Plot topomaps -----------------------------------------------------------</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="nb">map</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">microstates</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">83</span>     <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_topomap</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ch_type</span><span class="o">=</span><span class="s2">&quot;eeg&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="c1"># Plot GFP ---------------------------------------------------------------</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span> <span class="c1"># Get x-axis</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/mne/viz/topomap.py:1028,</span> in <span class="ni">plot_topomap</span><span class="nt">(data, pos, ch_type, sensors, names, mask, mask_params, contours, outlines, sphere, image_interp, extrapolate, border, res, size, cmap, vlim, cnorm, axes, show, onselect)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="k">if</span> <span class="n">cnorm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">vlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span>     <span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1025</span>         <span class="sa">f</span><span class="s2">&quot;Provided cnorm implicitly defines vmin=</span><span class="si">{</span><span class="n">cnorm</span><span class="o">.</span><span class="n">vmin</span><span class="si">}</span><span class="s2"> and &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1026</span>         <span class="sa">f</span><span class="s2">&quot;vmax=</span><span class="si">{</span><span class="n">cnorm</span><span class="o">.</span><span class="n">vmax</span><span class="si">}</span><span class="s2">; ignoring additional vlim/vmin/vmax params.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1027</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1028</span> <span class="k">return</span> <span class="n">_plot_topomap</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1029</span>     <span class="n">data</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1030</span>     <span class="n">pos</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1031</span>     <span class="n">vmin</span><span class="o">=</span><span class="n">vlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1032</span>     <span class="n">vmax</span><span class="o">=</span><span class="n">vlim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1033</span>     <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1034</span>     <span class="n">sensors</span><span class="o">=</span><span class="n">sensors</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1035</span>     <span class="n">res</span><span class="o">=</span><span class="n">res</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1036</span>     <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1037</span>     <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1038</span>     <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span>     <span class="n">mask_params</span><span class="o">=</span><span class="n">mask_params</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span>     <span class="n">outlines</span><span class="o">=</span><span class="n">outlines</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span>     <span class="n">contours</span><span class="o">=</span><span class="n">contours</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="n">image_interp</span><span class="o">=</span><span class="n">image_interp</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1043</span>     <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span>     <span class="n">onselect</span><span class="o">=</span><span class="n">onselect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="n">extrapolate</span><span class="o">=</span><span class="n">extrapolate</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1046</span>     <span class="n">sphere</span><span class="o">=</span><span class="n">sphere</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="n">border</span><span class="o">=</span><span class="n">border</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span>     <span class="n">ch_type</span><span class="o">=</span><span class="n">ch_type</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>     <span class="n">cnorm</span><span class="o">=</span><span class="n">cnorm</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/mne/viz/topomap.py:1253,</span> in <span class="ni">_plot_topomap</span><span class="nt">(data, pos, axes, ch_type, sensors, names, mask, mask_params, contours, outlines, sphere, image_interp, extrapolate, border, res, cmap, vmin, vmax, cnorm, show, onselect)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1246</span> <span class="c1"># Give a helpful error message for common mistakes regarding the position</span>
+<span class="g g-Whitespace">   </span><span class="mi">1247</span> <span class="c1"># matrix.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1248</span> <span class="n">pos_help</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span>     <span class="s2">&quot;Electrode positions should be specified as a 2D array with &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1250</span>     <span class="s2">&quot;shape (n_channels, 2). Each row in this matrix contains the &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1251</span>     <span class="s2">&quot;(x, y) position of an electrode.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span> <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1253</span> <span class="k">if</span> <span class="n">pos</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1254</span>     <span class="n">error</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="s2">&quot;</span><span class="si">{ndim}</span><span class="s2">D array supplied as electrode positions, where a 2D &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1256</span>         <span class="s2">&quot;array was expected&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1257</span>     <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="n">pos</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">pos_help</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;ndim&#39;
+</pre></div>
+</div>
+<img alt="../_images/49cb8a39507fbefc3bf8c6f532dc8565b50ae7b8ecdb24303b854e690be5b7a4.png" src="../_images/49cb8a39507fbefc3bf8c6f532dc8565b50ae7b8ecdb24303b854e690be5b7a4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">microstates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Microstates&#39;: array([[-0.11114267, -0.05553996, -0.17148415, -0.16096968, -0.0953579 ,
+         -0.01086835,  0.04858861, -0.17973009, -0.10610762, -0.00714437,
+          0.08603789, -0.18339351, -0.1340436 , -0.01692908,  0.13267581,
+          0.16035905, -0.1393878 , -0.03448516,  0.10353464,  0.20605329,
+         -0.09525259, -0.1222349 , -0.05093714,  0.07544057,  0.19077802,
+          0.22925806, -0.05124791,  0.01530144,  0.10597372,  0.18640658,
+          0.12717142, -0.1357126 , -0.1307655 , -0.04229765, -0.00838001,
+         -0.16651174, -0.12124959, -0.04791773,  0.00689438, -0.17887823,
+         -0.15806243,  0.05441447,  0.10365594, -0.16566263, -0.07703022,
+          0.05444439,  0.1532675 , -0.15892492, -0.10163605,  0.03745012,
+          0.17468025,  0.20186925, -0.08930911, -0.00802424,  0.14722997,
+          0.22879986, -0.06009322,  0.00401896,  0.11675682,  0.19620596,
+          0.22944539],
+        [-0.0965159 , -0.14827106, -0.03021104, -0.06217756, -0.12777343,
+         -0.18054447, -0.19866516,  0.02171773, -0.04084619, -0.12557246,
+         -0.17955501,  0.09795451,  0.09840021, -0.01232644, -0.10929487,
+         -0.16015297,  0.16866801,  0.12116029,  0.01229147, -0.07269864,
+         -0.12970927,  0.19802561,  0.19427169,  0.12543091,  0.05540651,
+         -0.03548085,  0.11832417,  0.17731057,  0.13488321,  0.07711629,
+         -0.01929844, -0.05742904, -0.09943446, -0.16441071, -0.18204831,
+         -0.03665832, -0.09064826, -0.15629891, -0.19210257,  0.02928446,
+         -0.00433671, -0.15557049, -0.188581  ,  0.09957396,  0.04484275,
+         -0.05201114, -0.1398632 ,  0.15470267,  0.15754529,  0.06982318,
+         -0.02973004, -0.10377623,  0.21801046,  0.1822057 ,  0.07037178,
+         -0.00266883,  0.22823159,  0.22890644,  0.17753962,  0.0960741 ,
+          0.02658884],
+        [-0.16253313, -0.16137338, -0.15853594, -0.14555511, -0.13179687,
+         -0.13613928, -0.13937374, -0.12489345, -0.06192077, -0.04865436,
+         -0.09811142, -0.09831646, -0.00308394,  0.04036081,  0.03276335,
+         -0.06922832,  0.02317726,  0.12265387,  0.14809593,  0.0704503 ,
+         -0.15752402,  0.0279121 ,  0.16608758,  0.22898318,  0.20750744,
+          0.05479224,  0.00158995,  0.10554463,  0.12911773,  0.11636965,
+         -0.01325616, -0.15664178, -0.15722419, -0.15253461, -0.16390835,
+         -0.1472472 , -0.13065894, -0.13102346, -0.14654928, -0.13324198,
+         -0.09109914, -0.06224171, -0.12142998, -0.06123192,  0.00657109,
+          0.04979213, -0.02178952, -0.040835  ,  0.08966164,  0.16216769,
+          0.13255508,  0.00311465,  0.09630465,  0.20656077,  0.22910885,
+          0.14745248,  0.09023774,  0.20829113,  0.21725447,  0.21053906,
+          0.10293597],
+        [-0.14669985, -0.1455273 , -0.12650778, -0.14900173, -0.16941964,
+         -0.15419896, -0.11909108, -0.099901  , -0.12394003, -0.12610344,
+         -0.089018  , -0.0321642 , -0.0355297 , -0.06278431, -0.0207552 ,
+         -0.00957389,  0.04572651,  0.03372345,  0.04140751,  0.07244876,
+         -0.16768008,  0.11459975,  0.12320143,  0.11740823,  0.15239163,
+          0.15323353,  0.13095757,  0.19339342,  0.19468055,  0.20802031,
+          0.13569738, -0.13799526, -0.16181078, -0.16301825, -0.128088  ,
+         -0.14362435, -0.16363049, -0.16416465, -0.14132841, -0.09639741,
+         -0.11479031, -0.10418161, -0.06739479, -0.03334944, -0.05977496,
+         -0.04275244, -0.01132379,  0.03730063,  0.04086975,  0.04181249,
+          0.06816524,  0.0658534 ,  0.12950282,  0.11921554,  0.1292625 ,
+          0.16200122,  0.19094734,  0.20198719,  0.19625049,  0.20011076,
+          0.21135179]]),
+ &#39;Sequence&#39;: array([0, 1, 3, 2, 3, 3, 0, 3, 1, 2, 1, 3, 0, 1, 2, 1, 1, 0, 0, 3, 1, 2,
+        0, 3, 1, 3, 2, 0, 1, 1, 0, 2, 3, 3, 1, 1, 2, 0, 3, 1, 1, 3, 1, 2,
+        0, 1, 2, 3, 1, 1]),
+ &#39;GEV&#39;: 0.787028664773024,
+ &#39;GEV_per_microstate&#39;: array([0.20739084, 0.1423387 , 0.29227948, 0.14501964]),
+ &#39;GFP&#39;: array([0.93862173, 0.9838683 , 0.9559881 , 0.94748262, 0.92177268,
+        0.9477159 , 0.98051693, 0.9756164 , 0.96018058, 0.9672285 ,
+        0.95003856, 0.96178144, 0.97893796, 0.96387653, 0.92643409,
+        0.94439185, 0.9988605 , 0.94772963, 0.96602346, 0.94755622,
+        1.        , 0.95036793, 0.94735151, 0.96287683, 0.9341312 ,
+        0.96282809, 0.96828943, 0.95280041, 0.92693744, 0.99691204,
+        0.96733528, 0.91520229, 0.90515338, 0.97173568, 0.96329495,
+        0.92973425, 0.96121967, 0.95570187, 0.95261374, 0.98903976,
+        0.96998278, 0.97014365, 0.94320267, 0.97348652, 0.95873895,
+        0.94951699, 0.89170384, 0.89721153, 0.95473295, 0.9396182 ]),
+ &#39;Polarity&#39;: array([-1., -1., -1.,  1., -1., -1., -1.,  1., -1.,  1., -1., -1.,  1.,
+        -1., -1.,  1.,  1.,  1.,  1., -1.,  1.,  1., -1.,  1., -1., -1.,
+         1., -1., -1., -1., -1., -1., -1., -1.,  1.,  1., -1.,  1., -1.,
+         1.,  1., -1.,  1., -1., -1.,  1.,  1.,  1., -1.,  1.]),
+ &#39;Info_algorithm&#39;: {&#39;n_clusters&#39;: 4,
+  &#39;clustering_function&#39;: functools.partial(&lt;function _cluster_kmod at 0x13174c0e0&gt;, n_clusters=4, max_iterations=1000, threshold=1e-06, random_state=4411),
+  &#39;random_state&#39;: 4411,
+  &#39;clusters_normalized&#39;: array([[-0.0965159 , -0.14827106, -0.03021104, -0.06217756, -0.12777343,
+          -0.18054447, -0.19866516,  0.02171773, -0.04084619, -0.12557246,
+          -0.17955501,  0.09795451,  0.09840021, -0.01232644, -0.10929487,
+          -0.16015297,  0.16866801,  0.12116029,  0.01229147, -0.07269864,
+          -0.12970927,  0.19802561,  0.19427169,  0.12543091,  0.05540651,
+          -0.03548085,  0.11832417,  0.17731057,  0.13488321,  0.07711629,
+          -0.01929844, -0.05742904, -0.09943446, -0.16441071, -0.18204831,
+          -0.03665832, -0.09064826, -0.15629891, -0.19210257,  0.02928446,
+          -0.00433671, -0.15557049, -0.188581  ,  0.09957396,  0.04484275,
+          -0.05201114, -0.1398632 ,  0.15470267,  0.15754529,  0.06982318,
+          -0.02973004, -0.10377623,  0.21801046,  0.1822057 ,  0.07037178,
+          -0.00266883,  0.22823159,  0.22890644,  0.17753962,  0.0960741 ,
+           0.02658884],
+         [-0.16253313, -0.16137338, -0.15853594, -0.14555511, -0.13179687,
+          -0.13613928, -0.13937374, -0.12489345, -0.06192077, -0.04865436,
+          -0.09811142, -0.09831646, -0.00308394,  0.04036081,  0.03276335,
+          -0.06922832,  0.02317726,  0.12265387,  0.14809593,  0.0704503 ,
+          -0.15752402,  0.0279121 ,  0.16608758,  0.22898318,  0.20750744,
+           0.05479224,  0.00158995,  0.10554463,  0.12911773,  0.11636965,
+          -0.01325616, -0.15664178, -0.15722419, -0.15253461, -0.16390835,
+          -0.1472472 , -0.13065894, -0.13102346, -0.14654928, -0.13324198,
+          -0.09109914, -0.06224171, -0.12142998, -0.06123192,  0.00657109,
+           0.04979213, -0.02178952, -0.040835  ,  0.08966164,  0.16216769,
+           0.13255508,  0.00311465,  0.09630465,  0.20656077,  0.22910885,
+           0.14745248,  0.09023774,  0.20829113,  0.21725447,  0.21053906,
+           0.10293597],
+         [-0.14669985, -0.1455273 , -0.12650778, -0.14900173, -0.16941964,
+          -0.15419896, -0.11909108, -0.099901  , -0.12394003, -0.12610344,
+          -0.089018  , -0.0321642 , -0.0355297 , -0.06278431, -0.0207552 ,
+          -0.00957389,  0.04572651,  0.03372345,  0.04140751,  0.07244876,
+          -0.16768008,  0.11459975,  0.12320143,  0.11740823,  0.15239163,
+           0.15323353,  0.13095757,  0.19339342,  0.19468055,  0.20802031,
+           0.13569738, -0.13799526, -0.16181078, -0.16301825, -0.128088  ,
+          -0.14362435, -0.16363049, -0.16416465, -0.14132841, -0.09639741,
+          -0.11479031, -0.10418161, -0.06739479, -0.03334944, -0.05977496,
+          -0.04275244, -0.01132379,  0.03730063,  0.04086975,  0.04181249,
+           0.06816524,  0.0658534 ,  0.12950282,  0.11921554,  0.1292625 ,
+           0.16200122,  0.19094734,  0.20198719,  0.19625049,  0.20011076,
+           0.21135179],
+         [-0.11114267, -0.05553996, -0.17148415, -0.16096968, -0.0953579 ,
+          -0.01086835,  0.04858861, -0.17973009, -0.10610762, -0.00714437,
+           0.08603789, -0.18339351, -0.1340436 , -0.01692908,  0.13267581,
+           0.16035905, -0.1393878 , -0.03448516,  0.10353464,  0.20605329,
+          -0.09525259, -0.1222349 , -0.05093714,  0.07544057,  0.19077802,
+           0.22925806, -0.05124791,  0.01530144,  0.10597372,  0.18640658,
+           0.12717142, -0.1357126 , -0.1307655 , -0.04229765, -0.00838001,
+          -0.16651174, -0.12124959, -0.04791773,  0.00689438, -0.17887823,
+          -0.15806243,  0.05441447,  0.10365594, -0.16566263, -0.07703022,
+           0.05444439,  0.1532675 , -0.15892492, -0.10163605,  0.03745012,
+           0.17468025,  0.20186925, -0.08930911, -0.00802424,  0.14722997,
+           0.22879986, -0.06009322,  0.00401896,  0.11675682,  0.19620596,
+           0.22944539]]),
+  &#39;residual&#39;: 0.0010249139181221223},
+ &#39;Info&#39;: None}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Global Explained Variance</span>
+<span class="n">gev_kmod</span> <span class="o">=</span> <span class="n">microstates_kmod</span><span class="p">[</span><span class="s1">&#39;GEV&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39; Using conventional Kmeans,  GEV = </span><span class="si">{</span><span class="n">gev_kmeans</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39; Using modified Kmeans,  GEV = </span><span class="si">{</span><span class="n">gev_kmod</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualize the extracted microstates</span>
+<span class="n">nk</span><span class="o">.</span><span class="n">microstates_plot</span><span class="p">(</span><span class="n">microstates_kmod</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span><span class="o">.</span><span class="n">microstates_static</span><span class="p">(</span><span class="n">microstates</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span><span class="o">.</span><span class="n">microstates_dynamic</span><span class="p">(</span><span class="n">microstates</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span><span class="o">.</span><span class="n">microstates_complexity</span><span class="p">(</span><span class="n">microstates</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "rtivadar/jmicros",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Microstates Analysis</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">EEG microstate analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-nr-1">Option nr 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backfitting">backfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-nr-2">Option nr 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neurokit-2-for-some-fancy-applications">Neurokit 2 for some fancy applications</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ruxandra Tivadar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
