@@ -377,8 +377,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a class="reference internal" href="#(https://rtivadar.github.io/jmicros/mini-book)"><span class="xref myst"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></span></a></p>
-<section id="introduction-to-microstates-analysis">
+  <section id="introduction-to-microstates-analysis">
 <h1>Introduction to Microstates Analysis<a class="headerlink" href="#introduction-to-microstates-analysis" title="Link to this heading">#</a></h1>
 <p>This is a jupyter book that illustrates a microstate analysis using the pycrostates and the neurokit2 packages.</p>
 <div class="admonition tip">
@@ -387,9 +386,11 @@ document.write(`
 <p>Microstates are series of stable or quasi-stable topographies, meaning that they represent a global brain state at one point in time. This global brain state comprises many local brain states, and its dynamics are not continuous, meaning that there are longer periods with small variance that can disappear quite rapidly, as is the case for focused attention and distraction, or wakefulness and sleep <span id="id3">[]</span>. These brain states and brain state changes are associated with changes in the electrical field of the scalp as measured by the EEG.</p>
 <p>First, the shape of topography is reference-independent. That is, the measure of the electric field at the scalp will not change even if one chooses another reference (cf. Figure 1 in Brunet, Murray, &amp; Michel, 2011). Second, the multivariate analyses used in topographic analyses (and more generally in analyses of global measures of the electric field at the scalp) allow for taking better advantage of the added information provided by high-density electrode montages while also retaining statistical rigor. Third, topographic information has a direct neurophysiologic interpretability. Physical laws dictate that topographic differences are indicative of changes in the configuration of the active cerebral sources (although the converse need not be true; e.g., Fender, 1987; Lehmann, 1987; Vaughan, 1982). Analyses can be formulated in a way that effects of strength and differences between conditions due to changes in sources configuration can be disentangled and treated independently. One practical consequence for researchers with strong a priori hypotheses regarding relevant time periods for a given process is that they can readily limit their analyses of these global measures of the electric field to these time periods while also gaining neurophysiologic interpretability, an advantage that is absent in traditional voltage waveform analyses.</p>
 </div>
-<p>‘’’{bibliography} ../references.bib
+<p>‘’’{bibliography} ./references.bib
+:filter: docname in docnames
 :all:
 ‘’’</p>
+<p><a class="reference internal" href="#(https://rtivadar.github.io/jmicros_ex/"><span class="xref myst"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></span></a></p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
