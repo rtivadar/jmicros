@@ -16,11 +16,12 @@ latex:
     targetname: book.tex
 
 # Add a bibtex file so that we can create citations
+extensions: 
+  - sphinxcontrib.bibtex
 bibtex_bibfiles:
-  - exercises/references.bib
-sphinx:
-  config:
-    bibtex_reference_style: author_year
+  - references.bib
+  - exercises/myrefs.bib
+
     
 html:
   use_issues_button: true
@@ -48,3 +49,5 @@ launch_buttons:
 html:
   use_issues_button: true
   use_repository_button: true
+
+

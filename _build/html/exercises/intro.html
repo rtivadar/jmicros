@@ -352,7 +352,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -368,6 +370,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-microstates">What are microstates</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -377,19 +387,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a class="reference internal" href="#(https://rtivadar.github.io/jmicros/mini-book)"><span class="xref myst"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></span></a></p>
-<section id="introduction-to-microstates-analysis">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-microstates-analysis">
 <h1>Introduction to Microstates Analysis<a class="headerlink" href="#introduction-to-microstates-analysis" title="Link to this heading">#</a></h1>
+<section id="what-are-microstates">
+<h2>What are microstates<a class="headerlink" href="#what-are-microstates" title="Link to this heading">#</a></h2>
 <p>This is a jupyter book that illustrates a microstate analysis using the pycrostates and the neurokit2 packages.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>EEG can be considered as a dynamical oscillatory system that can be described in terms of its state and dynamics, where the <em>state</em> describes the combination of variables that characterise the system at any given time <em>t</em>, and the <em>dynamics</em> describe how the <em>state</em> changes over time <span id="id1">[]</span>. One way of studying the EEG is given by finding ways to define momentary states of the system based on certain variables of interest and describing how characteristics of such states change in time. One such method is microstate analysis <span id="id2">[]</span>.</p>
-<p>Microstates are series of stable or quasi-stable topographies, meaning that they represent a global brain state at one point in time. This global brain state comprises many local brain states, and its dynamics are not continuous, meaning that there are longer periods with small variance that can disappear quite rapidly, as is the case for focused attention and distraction, or wakefulness and sleep <span id="id3">[]</span>. These brain states and brain state changes are associated with changes in the electrical field of the scalp as measured by the EEG.</p>
-<p>First, the shape of topography is reference-independent. That is, the measure of the electric field at the scalp will not change even if one chooses another reference (cf. Figure 1 in Brunet, Murray, &amp; Michel, 2011). Second, the multivariate analyses used in topographic analyses (and more generally in analyses of global measures of the electric field at the scalp) allow for taking better advantage of the added information provided by high-density electrode montages while also retaining statistical rigor. Third, topographic information has a direct neurophysiologic interpretability. Physical laws dictate that topographic differences are indicative of changes in the configuration of the active cerebral sources (although the converse need not be true; e.g., Fender, 1987; Lehmann, 1987; Vaughan, 1982). Analyses can be formulated in a way that effects of strength and differences between conditions due to changes in sources configuration can be disentangled and treated independently. One practical consequence for researchers with strong a priori hypotheses regarding relevant time periods for a given process is that they can readily limit their analyses of these global measures of the electric field to these time periods while also gaining neurophysiologic interpretability, an advantage that is absent in traditional voltage waveform analyses.</p>
+<p>EEG can be considered as a dynamical oscillatory system that can be described in terms of its state and dynamics, where the <em>state</em> describes the combination of variables that characterise the system at any given time <em>t</em>, and the <em>dynamics</em> describe how the <em>state</em> changes over time <span id="id1">[<a class="reference internal" href="#id10" title="Arjun Khanna, Alvaro Pascual-Leone, Christoph M Michel, and Faranak Farzan. Microstates in resting-state eeg: current status and future directions. Neuroscience &amp; Biobehavioral Reviews, 49:105–113, 2015.">KPLMF15</a>]</span>. One way of studying the EEG is given by finding ways to define momentary states of the system based on certain variables of interest and describing how characteristics of such states change in time. One such method is microstate analysis <span id="id2">[<a class="reference internal" href="#id11" title="Dietrich Lehmann, Hisaki Ozaki, and Ivan Pál. Eeg alpha map series: brain micro-states by space-oriented adaptive segmentation. Electroencephalography and clinical neurophysiology, 67(3):271–288, 1987.">LOPal87</a>]</span>.</p>
+<p>Microstates are series of stable or quasi-stable topographies, meaning that they represent a global brain state at one point in time. This global brain state comprises many local brain states, and its dynamics are not continuous, meaning that there are longer periods with small variance that can disappear quite rapidly, as is the case for focused attention and distraction, or wakefulness and sleep <span id="id3">[<a class="reference internal" href="#id9" title="Dietrich Lehmann, Roberto D Pascual-Marqui, and Christoph Michel. Eeg microstates. Scholarpedia, 4(3):7632, 2009.">LPMM09</a>]</span>. These brain states and brain state changes are associated with changes in the electrical field of the scalp as measured by the EEG.</p>
+<div class="docutils container" id="id4">
+<div role="list" class="citation-list">
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">KPLMF15</a><span class="fn-bracket">]</span></span>
+<p>Arjun Khanna, Alvaro Pascual-Leone, Christoph M Michel, and Faranak Farzan. Microstates in resting-state eeg: current status and future directions. <em>Neuroscience &amp; Biobehavioral Reviews</em>, 49:105–113, 2015.</p>
 </div>
-<p>‘’’{bibliography} ../references.bib
-:all:
-‘’’</p>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">LOPal87</a><span class="fn-bracket">]</span></span>
+<p>Dietrich Lehmann, Hisaki Ozaki, and Ivan Pál. Eeg alpha map series: brain micro-states by space-oriented adaptive segmentation. <em>Electroencephalography and clinical neurophysiology</em>, 67(3):271–288, 1987.</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">LPMM09</a><span class="fn-bracket">]</span></span>
+<p>Dietrich Lehmann, Roberto D Pascual-Marqui, and Christoph Michel. Eeg microstates. <em>Scholarpedia</em>, 4(3):7632, 2009.</p>
+</div>
+</div>
+</div>
+<p><a class="reference internal" href="#(https://rtivadar.github.io/jmicros_ex/"><span class="xref myst"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></span></a></p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -440,7 +462,20 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-microstates">What are microstates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
