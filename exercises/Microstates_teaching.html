@@ -666,6 +666,18 @@ Reading /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.fdt
 <img alt="../_images/36f2b92c52bb92bda0cbba94d5468c37b801c8c26465a8d96517765eba55b758.png" src="../_images/36f2b92c52bb92bda0cbba94d5468c37b801c8c26465a8d96517765eba55b758.png" />
 </div>
 </div>
+<p>As a comparison, here are some results found by other teams when doing microstate analysis (figure taken from <span id="id1">[<a class="reference internal" href="intro.html#id5" title="Christoph M. Michel and Thomas Koenig. Eeg microstates as a tool for studying the temporal dynamics of whole-brain neuronal networks: a review. NeuroImage, 180:577-593, 2018. Brain Connectivity Dynamics. URL: https://www.sciencedirect.com/science/article/pii/S105381191731008X, doi:https://doi.org/10.1016/j.neuroimage.2017.11.062.">Michel and Koenig, 2018</a>]</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;microstate_results.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/729146d52eb6ac7bdd8709ff7ba76807d7757e57d4791e24595d40c4fcb2682b.jpg" src="../_images/729146d52eb6ac7bdd8709ff7ba76807d7757e57d4791e24595d40c4fcb2682b.jpg" />
+</div>
+</div>
 </section>
 <section id="backfitting">
 <h2>backfitting<a class="headerlink" href="#backfitting" title="Link to this heading">#</a></h2>
@@ -1087,7 +1099,7 @@ loading data for subject: 010024 &amp; condition: EC
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of microstates:  4.0
 </pre></div>
 </div>
-<img alt="../_images/2adf4ba519b4834ae5ac9436b1e36843da67897886289f5f7019f8ba2540bd68.png" src="../_images/2adf4ba519b4834ae5ac9436b1e36843da67897886289f5f7019f8ba2540bd68.png" />
+<img alt="../_images/ce62f28a1ccc841ecbd4d1458a1196cd26c75e0a65ab8a87c51650e2f908d405.png" src="../_images/ce62f28a1ccc841ecbd4d1458a1196cd26c75e0a65ab8a87c51650e2f908d405.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1102,7 +1114,7 @@ loading data for subject: 010024 &amp; condition: EC
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">microstates</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">microstates_segment</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">_fitted_data</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">sampling_rate</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>                                      <span class="n">n_microstates</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Visualize the extracted microstates</span>

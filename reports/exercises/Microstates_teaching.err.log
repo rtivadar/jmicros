@@ -28,7 +28,7 @@ nk.microstates_plot(microstates)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mAttributeError[0m                            Traceback (most recent call last)
-Cell [0;32mIn[25], line 4[0m
+Cell [0;32mIn[26], line 4[0m
 [1;32m      1[0m microstates [38;5;241m=[39m nk[38;5;241m.[39mmicrostates_segment(ModK[38;5;241m.[39m_fitted_data, sampling_rate[38;5;241m=[39msampling_rate,
 [1;32m      2[0m                                      n_microstates[38;5;241m=[39m[38;5;241m4[39m)
 [1;32m      3[0m [38;5;66;03m# Visualize the extracted microstates[39;00m

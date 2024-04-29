@@ -10,7 +10,6 @@ EEG can be considered as a dynamical oscillatory system that can be described in
 
 %First, the shape of topography is reference-independent. That is, the measure of the electric field at the scalp will not change even if one chooses another reference (cf. Figure 1 in Brunet, Murray, & Michel, 2011). Second, the multivariate analyses used in topographic analyses (and more generally in analyses of global measures of the electric field at the scalp) allow for taking better advantage of the added information provided by high-density electrode montages while also retaining statistical rigor. Third, topographic information has a direct neurophysiologic interpretability. Physical laws dictate that topographic differences are indicative of changes in the configuration of the active cerebral sources (although the converse need not be true; e.g., Fender, 1987; Lehmann, 1987; Vaughan, 1982). Analyses can be formulated in a way that effects of strength and differences between conditions due to changes in sources configuration can be disentangled and treated independently. One practical consequence for researchers with strong a priori hypotheses regarding relevant time periods for a given process is that they can readily limit their analyses of these global measures of the electric field to these time periods while also gaining neurophysiologic interpretability, an advantage that is absent in traditional voltage waveform analyses.
 
-
 ```{note}
 ```
 
