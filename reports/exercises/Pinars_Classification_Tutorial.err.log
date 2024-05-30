@@ -1,0 +1,86 @@
+Traceback (most recent call last):
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/asyncio/base_events.py", line 685, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/tivadarr/anaconda3/envs/microstates/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# avoid classification of evoked responses by using epochs that start 1s after
+# cue onset.
+tmin, tmax = -1.0, 4.0
+subject = 1
+runs = [6, 10, 14]  # motor imagery: hands vs feet
+
+raw_fnames = eegbci.load_data(subject, runs)
+raw = concatenate_raws([read_raw_edf(f, preload=True) for f in raw_fnames])
+eegbci.standardize(raw)  # set channel names
+montage = make_standard_montage("standard_1005")
+raw.set_montage(montage)
+raw.annotations.rename(dict(T1="hands", T2="feet"))
+raw.set_eeg_reference(projection=True)
+
+# Apply band-pass filter
+raw.filter(7.0, 30.0, fir_design="firwin", skip_by_annotation="edge")
+
+picks = pick_types(raw.info, meg=False, eeg=True, stim=False, eog=False, exclude="bads")
+
+# Read epochs (train will be done only between 1 and 2s)
+# Testing will be done with a running classifier
+epochs = Epochs(
+    raw,
+    event_id=["hands", "feet"],
+    tmin=tmin,
+    tmax=tmax,
+    proj=True,
+    picks=picks,
+    baseline=None,
+    preload=True,
+)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[3], line 7[0m
+[1;32m      4[0m subject [38;5;241m=[39m [38;5;241m1[39m
+[1;32m      5[0m runs [38;5;241m=[39m [[38;5;241m6[39m, [38;5;241m10[39m, [38;5;241m14[39m]  [38;5;66;03m# motor imagery: hands vs feet[39;00m
+[0;32m----> 7[0m raw_fnames [38;5;241m=[39m [43meegbci[49m[38;5;241;43m.[39;49m[43mload_data[49m[43m([49m[43msubject[49m[43m,[49m[43m [49m[43mruns[49m[43m)[49m
+[1;32m      8[0m raw [38;5;241m=[39m concatenate_raws([read_raw_edf(f, preload[38;5;241m=[39m[38;5;28;01mTrue[39;00m) [38;5;28;01mfor[39;00m f [38;5;129;01min[39;00m raw_fnames])
+[1;32m      9[0m eegbci[38;5;241m.[39mstandardize(raw)  [38;5;66;03m# set channel names[39;00m
+
+File [0;32m<decorator-gen-301>:12[0m, in [0;36mload_data[0;34m(subject, runs, path, force_update, update_path, base_url, verbose)[0m
+
+File [0;32m~/anaconda3/envs/microstates/lib/python3.12/site-packages/mne/datasets/eegbci/eegbci.py:181[0m, in [0;36mload_data[0;34m(subject, runs, path, force_update, update_path, base_url, verbose)[0m
+[1;32m    179[0m folder [38;5;241m=[39m [38;5;124m"[39m[38;5;124mMNE-eegbci-data[39m[38;5;124m"[39m
+[1;32m    180[0m name [38;5;241m=[39m [38;5;124m"[39m[38;5;124mEEGBCI[39m[38;5;124m"[39m
+[0;32m--> 181[0m path [38;5;241m=[39m [43m_get_path[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mconfig_key[49m[43m,[49m[43m [49m[43mname[49m[43m)[49m
+[1;32m    183[0m [38;5;66;03m# extract path parts[39;00m
+[1;32m    184[0m pattern [38;5;241m=[39m [38;5;124mr[39m[38;5;124m"[39m[38;5;124m(?:https?://.*)(files)/(eegmmidb)/([39m[38;5;124m\[39m[38;5;124md+[39m[38;5;124m\[39m[38;5;124m.[39m[38;5;124m\[39m[38;5;124md+[39m[38;5;124m\[39m[38;5;124m.[39m[38;5;124m\[39m[38;5;124md+)/?[39m[38;5;124m"[39m
+
+File [0;32m~/anaconda3/envs/microstates/lib/python3.12/site-packages/mne/datasets/utils.py:118[0m, in [0;36m_get_path[0;34m(path, key, name)[0m
+[1;32m    112[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m path[38;5;241m.[39mexists():
+[1;32m    113[0m         msg [38;5;241m=[39m (
+[1;32m    114[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mDownload location [39m[38;5;132;01m{[39;00mpath[38;5;132;01m}[39;00m[38;5;124m as specified by MNE_DATA does [39m[38;5;124m"[39m
+[1;32m    115[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mnot exist. Either create this directory manually and try [39m[38;5;124m"[39m
+[1;32m    116[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124magain, or set MNE_DATA to an existing directory.[39m[38;5;124m"[39m
+[1;32m    117[0m         )
+[0;32m--> 118[0m         [38;5;28;01mraise[39;00m [38;5;167;01mFileNotFoundError[39;00m(msg)
+[1;32m    119[0m     [38;5;28;01mreturn[39;00m path
+[1;32m    120[0m [38;5;66;03m# 4. ~/mne_data (but use a fake home during testing so we don't[39;00m
+[1;32m    121[0m [38;5;66;03m#    unnecessarily create ~/mne_data)[39;00m
+
+[0;31mFileNotFoundError[0m: Download location /Users/tivadarr/datasets as specified by MNE_DATA does not exist. Either create this directory manually and try again, or set MNE_DATA to an existing directory.
+
