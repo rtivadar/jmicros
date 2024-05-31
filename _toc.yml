@@ -3,8 +3,14 @@
 
 format: jb-book
 root: exercises/intro
-chapters:
-- file: exercises/Microstates_teaching.ipynb
+parts:
+  - caption: Microstates
+    chapters:
+    - file: exercises/Microstates_teaching.ipynb
+  - caption: Multivariate Pattern Analysis
+    chapters:
+    - file: exercises/Pinars_MVPA_tutorial.ipynb
+
 
 
 
