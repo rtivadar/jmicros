@@ -9,6 +9,7 @@ parts:
     - file: exercises/Microstates_teaching.ipynb
   - caption: Multivariate Pattern Analysis
     chapters:
+    - file: exercises/MLMethodsonTemporalDimensions.ipynb
     - file: exercises/Pinars_MVPA_tutorial.ipynb
 
 
