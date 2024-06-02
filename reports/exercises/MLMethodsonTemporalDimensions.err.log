@@ -37,8 +37,10 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['individual_cluster_centers = list()', 'for subject_id in subject_ids:', '    for condition_id in condition:', '    # load Data', '        raw_fname = lemon.data_path(subject_id=subject_id, condition=condition_id)']
-...
-['        # subject level clustering', '        ModK = ModKMeans(n_clusters=5, random_state=42)', '        ModK.fit(gfp_peaks, n_jobs=2)', '        ModK.plot()', '        individual_cluster_centers.append(ModK.cluster_centers_)']
+CV_score_time_UN = []
+for i in range(len(data_UN)):
+    print('Participant id: '+ str(ids[i]))
+    clf = make_pipeline(Vectorizer(), StandardScaler(), LinearDiscriminantAnalysis(solver='svd'))
+    CV_score_time_UN.append(applyCrossValidation(data_UN[i], labels_UN[i], epochs_UN[i], ids[i], clf))
 -------------------
 
