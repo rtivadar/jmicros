@@ -183,7 +183,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multivariate Pattern Analysis</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MLMethodsonTemporalDimensions.html">Tutorial #6: Applying Machine Learning Methods to Temporal Dimensions of EEG Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Pinars_MVPA_tutorial.html">Analyzing neural patterns with Multivariate Pattern Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Decoding_Examples.html">Analyzing neural patterns with Multivariate Pattern Analysis</a></li>
 
 
 
@@ -481,8 +481,8 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if some packages do not load on the google site, use command below</span>
-<span class="c1">#!pip install neurokit2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if some packages do not load on the google site, use command below without #</span>
+<span class="c1">#!pip install neurokit2 mne pycrostates</span>
 </pre></div>
 </div>
 </div>
@@ -648,205 +648,7 @@ Reading /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.fdt
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading data for subject: 010024 &amp; condition: EC
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/PIL/ImageFile.py:536,</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">536</span>     <span class="n">fh</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">537</span>     <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-<span class="ne">AttributeError</span>: &#39;_idat&#39; object has no attribute &#39;fileno&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">ModK</span> <span class="o">=</span> <span class="n">ModKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ModK</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">gfp_peaks</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">ModK</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">individual_cluster_centers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ModK</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/pycrostates/utils/_logs.py:147,</span> in <span class="ni">verbose.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">147</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/pycrostates/cluster/_base.py:558,</span> in <span class="ni">_BaseCluster.plot</span><span class="nt">(self, axes, show_gradient, gradient_kwargs, block, show, verbose, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">556</span> <span class="n">picks</span> <span class="o">=</span> <span class="n">_picks_to_idx</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">none</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="s2">&quot;bads&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="n">info</span> <span class="o">=</span> <span class="n">pick_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">,</span> <span class="n">picks</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">558</span> <span class="k">return</span> <span class="n">plot_cluster_centers</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">559</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cluster_centers_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">560</span>     <span class="n">info</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">561</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cluster_names</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">562</span>     <span class="n">axes</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">563</span>     <span class="n">show_gradient</span><span class="o">=</span><span class="n">show_gradient</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">564</span>     <span class="n">gradient_kwargs</span><span class="o">=</span><span class="n">gradient_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">565</span>     <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">567</span>     <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/pycrostates/utils/_logs.py:145,</span> in <span class="ni">verbose.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">if</span> <span class="s2">&quot;verbose&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="k">with</span> <span class="n">_use_log_level</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]):</span>
-<span class="ne">--&gt; </span><span class="mi">145</span>         <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/pycrostates/viz/cluster_centers.py:153,</span> in <span class="ni">plot_cluster_centers</span><span class="nt">(cluster_centers, info, cluster_names, axes, show_gradient, gradient_kwargs, block, show, verbose, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">153</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="k">return</span> <span class="n">f</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib/pyplot.py:527,</span> in <span class="ni">show</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">484</span><span class="sd"> Display all open figures.</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">524</span><span class="sd"> explicitly there.</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">526</span> <span class="n">_warn_if_gui_out_of_main_thread</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">527</span> <span class="k">return</span> <span class="n">_get_backend_mod</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib_inline/backend_inline.py:90,</span> in <span class="ni">show</span><span class="nt">(close, block)</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="k">for</span> <span class="n">figure_manager</span> <span class="ow">in</span> <span class="n">Gcf</span><span class="o">.</span><span class="n">get_all_fig_managers</span><span class="p">():</span>
-<span class="ne">---&gt; </span><span class="mi">90</span>         <span class="n">display</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>             <span class="n">figure_manager</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>             <span class="n">metadata</span><span class="o">=</span><span class="n">_fetch_figure_metadata</span><span class="p">(</span><span class="n">figure_manager</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">figure</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>         <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">show</span><span class="o">.</span><span class="n">_to_draw</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/IPython/core/display_functions.py:298,</span> in <span class="ni">display</span><span class="nt">(include, exclude, metadata, transient, display_id, raw, clear, *objs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">publish_display_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">298</span>     <span class="n">format_dict</span><span class="p">,</span> <span class="n">md_dict</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">format_dict</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span>         <span class="c1"># nothing to display (e.g. _ipython_display_ took over)</span>
-<span class="g g-Whitespace">    </span><span class="mi">301</span>         <span class="k">continue</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/IPython/core/formatters.py:182,</span> in <span class="ni">DisplayFormatter.format</span><span class="nt">(self, obj, include, exclude)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="n">md</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">182</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="k">except</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span>     <span class="c1"># FIXME: log the exception</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="k">raise</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/decorator.py:232,</span> in <span class="ni">decorate.&lt;locals&gt;.fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">232</span> <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/IPython/core/formatters.py:226,</span> in <span class="ni">catch_format_error</span><span class="nt">(method, self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;show traceback on failed format call&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">226</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span> <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="c1"># don&#39;t warn on NotImplementedErrors</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_return</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/IPython/core/formatters.py:343,</span> in <span class="ni">BaseFormatter.__call__</span><span class="nt">(self, obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="k">pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">343</span>     <span class="k">return</span> <span class="n">printer</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span> <span class="c1"># Finally look for special method names</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/IPython/core/pylabtools.py:152,</span> in <span class="ni">print_figure</span><span class="nt">(fig, fmt, bbox_inches, base64, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span>     <span class="kn">from</span> <span class="nn">matplotlib.backend_bases</span> <span class="kn">import</span> <span class="n">FigureCanvasBase</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="n">FigureCanvasBase</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">152</span> <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">bytes_io</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="n">data</span> <span class="o">=</span> <span class="n">bytes_io</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;svg&#39;</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib/backend_bases.py:2193,</span> in <span class="ni">FigureCanvasBase.print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2189</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2190</span>     <span class="c1"># _get_renderer may change the figure dpi (as vector formats</span>
-<span class="g g-Whitespace">   </span><span class="mi">2191</span>     <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2192</span>     <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2193</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2194</span>             <span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2195</span>             <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2196</span>             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2197</span>             <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2198</span>             <span class="n">bbox_inches_restore</span><span class="o">=</span><span class="n">_bbox_inches_restore</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2199</span>             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2200</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2201</span>     <span class="k">if</span> <span class="n">bbox_inches</span> <span class="ow">and</span> <span class="n">restore_bbox</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib/backend_bases.py:2043,</span> in <span class="ni">FigureCanvasBase._switch_canvas_and_return_print_method.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2039</span>     <span class="n">optional_kws</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Passed by print_figure for other renderers.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2040</span>         <span class="s2">&quot;dpi&quot;</span><span class="p">,</span> <span class="s2">&quot;facecolor&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolor&quot;</span><span class="p">,</span> <span class="s2">&quot;orientation&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2041</span>         <span class="s2">&quot;bbox_inches_restore&quot;</span><span class="p">}</span>
-<span class="g g-Whitespace">   </span><span class="mi">2042</span>     <span class="n">skip</span> <span class="o">=</span> <span class="n">optional_kws</span> <span class="o">-</span> <span class="p">{</span><span class="o">*</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">meth</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">}</span>
-<span class="ne">-&gt; </span><span class="mi">2043</span>     <span class="n">print_method</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">meth</span><span class="p">)(</span><span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">meth</span><span class="p">(</span>
-<span class="nn">   2044         *args, **{k: v for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">() if k not in skip}))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2045</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># Let third-parties do as they see fit.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2046</span>     <span class="n">print_method</span> <span class="o">=</span> <span class="n">meth</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:497,</span> in <span class="ni">FigureCanvasAgg.print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="k">def</span> <span class="nf">print_png</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename_or_obj</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span><span class="sd">     Write the figure to a PNG file.</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span><span class="sd">         *metadata*, including the default &#39;Software&#39; key.</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">497</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_print_pil</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:446,</span> in <span class="ni">FigureCanvasAgg._print_pil</span><span class="nt">(self, filename_or_obj, fmt, pil_kwargs, metadata)</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="sd"> Draw the canvas, then save it using `.image.imsave` (to which</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="sd"> *pil_kwargs* and *metadata* are forwarded).</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span> <span class="n">FigureCanvasAgg</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">446</span> <span class="n">mpl</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="n">filename_or_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_rgba</span><span class="p">(),</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span>     <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="n">pil_kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/matplotlib/image.py:1656,</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1654</span> <span class="n">pil_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1655</span> <span class="n">pil_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;dpi&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">dpi</span><span class="p">,</span> <span class="n">dpi</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1656</span> <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">pil_kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/PIL/Image.py:2459,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2456</span>         <span class="n">fp</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w+b&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2458</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2459</span>     <span class="n">save_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2460</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2461</span>     <span class="k">if</span> <span class="n">open_fp</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/PIL/PngImagePlugin.py:1412,</span> in <span class="ni">_save</span><span class="nt">(im, fp, filename, chunk, save_all)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1408</span>     <span class="n">im</span> <span class="o">=</span> <span class="n">_write_multiple_frames</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1409</span>         <span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">rawmode</span><span class="p">,</span> <span class="n">default_image</span><span class="p">,</span> <span class="n">append_images</span>
-<span class="g g-Whitespace">   </span><span class="mi">1410</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1411</span> <span class="k">if</span> <span class="n">im</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1412</span>     <span class="n">ImageFile</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">_idat</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">chunk</span><span class="p">),</span> <span class="p">[(</span><span class="s2">&quot;zip&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rawmode</span><span class="p">)])</span>
-<span class="g g-Whitespace">   </span><span class="mi">1414</span> <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1415</span>     <span class="k">for</span> <span class="n">info_chunk</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">chunks</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/PIL/ImageFile.py:540,</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="n">_encode_tile</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tile</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">,</span> <span class="n">fh</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">539</span> <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">UnsupportedOperation</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">540</span>     <span class="n">_encode_tile</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tile</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;flush&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/PIL/ImageFile.py:559,</span> in <span class="ni">_encode_tile</span><span class="nt">(im, fp, tile, bufsize, fh, exc)</span>
-<span class="g g-Whitespace">    </span><span class="mi">556</span> <span class="k">if</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">557</span>     <span class="c1"># compress to Python file-compatible object</span>
-<span class="g g-Whitespace">    </span><span class="mi">558</span>     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">559</span>         <span class="n">errcode</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">bufsize</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="g g-Whitespace">    </span><span class="mi">560</span>         <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">561</span>         <span class="k">if</span> <span class="n">errcode</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
+<img alt="../_images/e34e0da8a5392cdd624301aa61f52f8364376f2d7ae13f6e7ce3de911044f08a.png" src="../_images/e34e0da8a5392cdd624301aa61f52f8364376f2d7ae13f6e7ce3de911044f08a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -865,6 +667,7 @@ Reading /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.fdt
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/c2af4a6f953308a19f7b6910f4263f18bbcfa7e54eafc321fa7e5ac4db13cc8d.png" src="../_images/c2af4a6f953308a19f7b6910f4263f18bbcfa7e54eafc321fa7e5ac4db13cc8d.png" />
+<img alt="../_images/c2af4a6f953308a19f7b6910f4263f18bbcfa7e54eafc321fa7e5ac4db13cc8d.png" src="../_images/c2af4a6f953308a19f7b6910f4263f18bbcfa7e54eafc321fa7e5ac4db13cc8d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -881,6 +684,7 @@ Reading /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.fdt
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/86a59aa6095f87b5ae315a55589f13ff1a8aa32d1e5bfe11383e9868c95dd849.png" src="../_images/86a59aa6095f87b5ae315a55589f13ff1a8aa32d1e5bfe11383e9868c95dd849.png" />
+<img alt="../_images/86a59aa6095f87b5ae315a55589f13ff1a8aa32d1e5bfe11383e9868c95dd849.png" src="../_images/86a59aa6095f87b5ae315a55589f13ff1a8aa32d1e5bfe11383e9868c95dd849.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -892,9 +696,34 @@ Reading /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.fdt
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[........................................] 0/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[█████...................................] 1/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[███████████.............................] 2/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[█████████████████.......................] 3/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[██████████████████████..................] 4/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[████████████████████████████............] 5/7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[██████████████████████████████████......] 6/7
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[████████████████████████████████████████] 7/7
-
-Optimal number of microstates:  4.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of microstates:  4.0
 </pre></div>
 </div>
 </div>
@@ -1048,13 +877,21 @@ Optimal number of microstates:  4.0
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010020_EO.set
 loading data for subject: 010020 &amp; condition: EO
-dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010021_EO.set
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010021_EO.set
 loading data for subject: 010021 &amp; condition: EO
-dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010022_EO.set
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010022_EO.set
 loading data for subject: 010022 &amp; condition: EO
-dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010023_EO.set
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010023_EO.set
 loading data for subject: 010023 &amp; condition: EO
-dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010024_EO.set
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataname: /Users/tivadarr/pycrostates_data/PREPROCESSED_LEMON/sub-010024_EO.set
 loading data for subject: 010024 &amp; condition: EO
 </pre></div>
 </div>
@@ -1074,7 +911,7 @@ loading data for subject: 010024 &amp; condition: EO
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" src="../_images/bd1c69ffdabea23af39cd5de506f789c067a223aba8898261068d053e5d5e029.png" />
+<img alt="../_images/1a382c7a3d3f1a44c9b0488e6716ec0f7360e0ef0d44998ff6cc3df1448f9f27.png" src="../_images/1a382c7a3d3f1a44c9b0488e6716ec0f7360e0ef0d44998ff6cc3df1448f9f27.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1089,7 +926,7 @@ loading data for subject: 010024 &amp; condition: EO
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" src="../_images/781146fdd3f64d2b489efdda685e1e090fe122da283ce149679abb8e554356b2.png" />
+<img alt="../_images/b613016b00415314205a5cd56074547431375ad88f12931150891f4737c77dff.png" src="../_images/b613016b00415314205a5cd56074547431375ad88f12931150891f4737c77dff.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1101,9 +938,83 @@ loading data for subject: 010024 &amp; condition: EO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[████████████████████████████████████████] 7/7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[........................................] 0/7
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">LinAlgError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">n_optimal</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">nk</span><span class="o">.</span><span class="n">microstates_findnumber</span><span class="p">(</span><span class="n">ModK_g_EO</span><span class="o">.</span><span class="n">_fitted_data</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimal number of microstates: &quot;</span><span class="p">,</span> <span class="n">n_optimal</span><span class="p">)</span>
 
-Optimal number of microstates:  5.0
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/neurokit2/microstates/microstates_findnumber.py:83,</span> in <span class="ni">microstates_findnumber</span><span class="nt">(eeg, n_max, method, clustering_method, show, verbose, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">n_microstates</span> <span class="ow">in</span> <span class="n">progress_bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">83</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">microstates_segment</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>         <span class="n">eeg</span><span class="p">,</span> <span class="n">n_microstates</span><span class="o">=</span><span class="n">n_microstates</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">clustering_method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="n">segmentation</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;Sequence&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="n">rez</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/neurokit2/microstates/microstates_segment.py:256,</span> in <span class="ni">microstates_segment</span><span class="nt">(eeg, n_microstates, train, method, gfp_method, sampling_rate, standardize_eeg, n_runs, max_iterations, criterion, random_state, optimize, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span>     <span class="n">segmentation</span><span class="p">,</span> <span class="n">polarity</span><span class="p">,</span> <span class="n">gev</span><span class="p">,</span> <span class="n">gev_all</span> <span class="o">=</span> <span class="n">_microstates_segment_runsegmentation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span>         <span class="n">data</span><span class="p">,</span> <span class="n">microstates</span><span class="p">,</span> <span class="n">gfp</span><span class="p">,</span> <span class="n">n_microstates</span><span class="o">=</span><span class="n">n_microstates</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="c1"># Reorder</span>
+<span class="ne">--&gt; </span><span class="mi">256</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">microstates</span> <span class="o">=</span> <span class="n">microstates_classify</span><span class="p">(</span><span class="n">segmentation</span><span class="p">,</span> <span class="n">microstates</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="c1"># CLustering quality</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="c1">#    quality = cluster_quality(data, segmentation, clusters=microstates, info=info, n_random=10, sd=gfp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span> 
+<span class="g g-Whitespace">    </span><span class="mi">261</span> <span class="c1"># Output</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>     <span class="s2">&quot;Microstates&quot;</span><span class="p">:</span> <span class="n">microstates</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span>     <span class="s2">&quot;Sequence&quot;</span><span class="p">:</span> <span class="n">segmentation</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span>     <span class="s2">&quot;Info&quot;</span><span class="p">:</span> <span class="n">info_mne</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span> <span class="p">}</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/neurokit2/microstates/microstates_classify.py:46,</span> in <span class="ni">microstates_classify</span><span class="nt">(segmentation, microstates)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;**Reorder (sort) the microstates (experimental)**</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd"> Reorder (sort) the microstates (experimental) based on the pattern of values in the vector of</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="c1"># Reorder</span>
+<span class="ne">---&gt; </span><span class="mi">46</span> <span class="n">new_order</span> <span class="o">=</span> <span class="n">_microstates_sort</span><span class="p">(</span><span class="n">microstates</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">microstates</span> <span class="o">=</span> <span class="n">microstates</span><span class="p">[</span><span class="n">new_order</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="n">replacement</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">new_order</span><span class="p">))</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/neurokit2/microstates/microstates_classify.py:68,</span> in <span class="ni">_microstates_sort</span><span class="nt">(microstates)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order_original</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="n">state</span> <span class="o">=</span> <span class="n">microstates</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+<span class="ne">---&gt; </span><span class="mi">68</span>     <span class="n">_</span><span class="p">,</span> <span class="n">coefs_linear</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">coefs_quadratic</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>         <span class="n">state</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">)),</span> <span class="mi">2</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="c1"># For each state, which is the biggest trend, linear or quadratic</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">order_quad</span> <span class="o">=</span> <span class="n">order_original</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">coefs_linear</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">coefs_quadratic</span><span class="p">)]</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/numpy/lib/polynomial.py:669,</span> in <span class="ni">polyfit</span><span class="nt">(x, y, deg, rcond, full, w, cov)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">NX</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">lhs</span><span class="o">*</span><span class="n">lhs</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span> <span class="n">lhs</span> <span class="o">/=</span> <span class="n">scale</span>
+<span class="ne">--&gt; </span><span class="mi">669</span> <span class="n">c</span><span class="p">,</span> <span class="n">resids</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">lstsq</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">rcond</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># broadcast scale coefficients</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span> <span class="c1"># warn on rank reduction, which indicates an ill conditioned matrix</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/numpy/linalg/linalg.py:2326,</span> in <span class="ni">lstsq</span><span class="nt">(a, b, rcond)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2323</span> <span class="k">if</span> <span class="n">n_rhs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2324</span>     <span class="c1"># lapack can&#39;t handle n_rhs = 0 - so allocate the array one larger in that axis</span>
+<span class="g g-Whitespace">   </span><span class="mi">2325</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n_rhs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2326</span> <span class="n">x</span><span class="p">,</span> <span class="n">resids</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">gufunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rcond</span><span class="p">,</span> <span class="n">signature</span><span class="o">=</span><span class="n">signature</span><span class="p">,</span> <span class="n">extobj</span><span class="o">=</span><span class="n">extobj</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2327</span> <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2328</span>     <span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nn">File ~/anaconda3/envs/microstates/lib/python3.12/site-packages/numpy/linalg/linalg.py:124,</span> in <span class="ni">_raise_linalgerror_lstsq</span><span class="nt">(err, flag)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="k">def</span> <span class="nf">_raise_linalgerror_lstsq</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">124</span>     <span class="k">raise</span> <span class="n">LinAlgError</span><span class="p">(</span><span class="s2">&quot;SVD did not converge in Linear Least Squares&quot;</span><span class="p">)</span>
+
+<span class="ne">LinAlgError</span>: SVD did not converge in Linear Least Squares
 </pre></div>
 </div>
 </div>
